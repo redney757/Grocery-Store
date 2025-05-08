@@ -27,6 +27,9 @@ const inventory = [
  */
 function logNames(items) {
   // TODO: use `forEach`
+  items.forEach(element => {
+    console.log(element.name)
+  });
 }
 
 /**
@@ -35,6 +38,8 @@ function logNames(items) {
  */
 function getUppercaseNames(items) {
   // TODO: use `map`
+  const upperCaseNames = items.map(item => item.name.toUpperCase());
+  return upperCaseNames;
 }
 
 /**
@@ -44,6 +49,8 @@ function getUppercaseNames(items) {
  */
 function getItemById(items, id) {
   // TODO: use `find`
+  const foundItem = items.find(item => item.id === id);
+  return foundItem.name;
 }
 
 /**
@@ -53,6 +60,12 @@ function getItemById(items, id) {
  */
 function getItemPriceByName(items, name) {
   // TODO: use a loop!
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].name === name) {
+      return items[i].price;
+    }
+  }
+  return null; // Return null if the item is not found
 }
 
 /**
@@ -62,6 +75,8 @@ function getItemPriceByName(items, name) {
  */
 function getItemsByCategory(items, category) {
   // TODO: use `filter`
+  const filteredItems = items.filter(item => item.category === category);
+  return filteredItems;
 }
 
 /**
@@ -70,6 +85,12 @@ function getItemsByCategory(items, category) {
  */
 function countItems(items) {
   // TODO: use `reduce`
+  const totalQuantity = items.reduce((accumulator, item) => {
+    return accumulator + item.quantity;
+  }
+  , 0);
+  return totalQuantity;
+
 }
 
 /**
@@ -78,6 +99,11 @@ function countItems(items) {
  */
 function getTotalPrice(items) {
   // TODO: use `reduce`
+  const totalPrice = items.reduce((accumulator, item) => {
+    return accumulator + item.price * item.quantity;
+  }
+  , 0);
+  return totalPrice;
 }
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
